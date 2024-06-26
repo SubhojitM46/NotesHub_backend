@@ -40,7 +40,8 @@ export const login = async (req, res) => {
         const user = await User.findOne({ email });
         let isMatched = false;
         if (user) {
-            isMatched = await bcrypt.compare(password, user.password)
+            if(password==user.password)
+                isMatched=true;
 
         }
 
